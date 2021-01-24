@@ -193,9 +193,8 @@
                         <li>
                             <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-calendar"></i><span> Danh Mục <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                             <ul class="submenu">
-                                <li><a href="email-inbox.html">Inbox</a></li>
-                                <li><a href="email-read.html">Email Read</a></li>
-                                <li><a href="email-compose.html">Email Compose</a></li>
+                                <li><a href="{{URL::to('/add-category')}}">Thêm danh mục</a></li>
+                                <li><a href="{{URL::to('/all-category-product')}}">Danh sách danh mục</a></li>
                             </ul>
                         </li>
                         <li>
@@ -260,12 +259,12 @@
                     <div class="page-title-box">
 
                         <div class="row align-items-center ">
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 <div class="page-title-box">
                                     <h4 class="page-title">Dashboard</h4>
-                                    <ol class="breadcrumb">
+                                   
                                        @yield('content')
-                                    </ol>
+                                  
                                 </div>
                             </div>
 
