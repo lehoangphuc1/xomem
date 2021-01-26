@@ -12,7 +12,7 @@
                                         }    
                                          ?>  
 
-                                    <h4 class="mt-0 header-title text-center">Danh Sách Danh Mục Sản Phẩm</h4>
+                                    <h4 class="mt-0 header-title text-center">Danh Sách Thương Hiệu Sản Phẩm</h4>
                                     </p>
 
                                     <div class="table-responsive">
@@ -22,28 +22,26 @@
                                                     <th>Tên Danh Mục</th>
                                                     <th>Trạng Thái</th>
                                                     <th>Slug</th>
-                                                    <th>Meta Keywords</th>
                                                     <th>Action</th>
                                                     <th>
-                                                       <a href="{{URL::to('/add-category')}}" class="active styling-edit btn btn-primary" ui-toggle-class="">Thêm</a></th>
+                                                       <a href="{{URL::to('/add-brand')}}" class="active styling-edit btn btn-primary" ui-toggle-class="">Thêm</a></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                             @foreach($all_category as $key =>$cate)
+                                             @foreach($all_brand as $key =>$brand)
                                                 <tr>
-                                                    <td>{{$cate->category_name}}</td>
+                                                    <td>{{$brand->brand_name}}</td>
                                                     <td>  <?php  
-                                                            if($cate->category_status==0){
+                                                            if($brand->brand_status==0){
                                                                 echo "Ẩn";
                                                             }else{
                                                                 echo "Hiện";
                                                             }
                                                             ?></td>
-                                                    <td>{{$cate->slug_category_product}}</td>
-                                                    <td>{{$cate->meta_keywords}}</td>
+                                                    <td>{{$brand->brand_slug}}</td>
                                                     <td>
-                                                         <a href="{{URL::to('/edit-category/'.$cate->category_id)}}" class="active styling-edit btn btn-warning" ui-toggle-class="">Sửa</a>
-              <a href="{{URL::to('/delete-category/'.$cate->category_id)}}" onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục không?')" class="active styling-edit btn btn-danger" ui-toggle-class="">Xóa</a>
+                                                         <a href="{{URL::to('/edit-brand/'.$brand->brand_id)}}" class="active styling-edit btn btn-warning" ui-toggle-class="">Sửa</a>
+              <a href="{{URL::to('/delete-brand/'.$brand->brand_id)}}" onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục không?')" class="active styling-edit btn btn-danger" ui-toggle-class="">Xóa</a>
                                                     </td>
                                                      <td></td>       
                                                 </tr>

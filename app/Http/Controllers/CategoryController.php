@@ -24,8 +24,7 @@ class CategoryController extends Controller
     	$this->AuthLogin();
     	return view('backend.category.add_category');
     }
-
-       public function save_category(Request $rq){
+    public function save_category(Request $rq){
         $this->AuthLogin();
     	$data = array(); // khai bao 1 cai mang de chua du lieu tra ve
         $data['category_name']   =  $rq->category_name;
@@ -35,7 +34,7 @@ class CategoryController extends Controller
         $data['meta_keywords'] =  $rq->category_keyword;
         DB::table('tbl_category_product')->insert($data);//insert mang data vao db
         Session::put('message','Thêm danh mục sản phẩm thành công');
-        return Redirect::to('backend.category.add_category');
+        return Redirect::to('add-category');
     }
     public function all_category(Request $rq){
     	$this->AuthLogin();
@@ -43,22 +42,29 @@ class CategoryController extends Controller
     	$manage_category = view('backend.category.all_category')->with('all_category',$all_category);
     	return view('back-share')->with('backend.category.all_category',$manage_category);
     }
-
-
     public function edit_category($category_product_id){
     $this->AuthLogin();
 	$edit_category = DB::table('tbl_category_product')->where('category_id',$category_product_id)->get();//first la lay 1 san pham thoi.
     $manage_category = view('backend.category.edit_category')->with('edit_category',$edit_category);
     return view('back-share')->with('backend.category.edit_category',$manage_category);
     }
-    public function update_category(Request $rq,$category_product_id ){
+    public function update_category(Request $rq,$category_id ){
     $this->AuthLogin();
      $data = array();
-     $data['category_name']= $rq->category_product_name;
-     $data['category_desc'] = $rq->category_product_desc;
-     DB::table('tbl_category_product')->where('category_id',$category_product_id)->update($data);// update mang data vào db
+     $data['category_name']   =  $rq->category_name;
+     $data['category_desc']   =  $rq->category_desc;
+     $data['category_status'] =  $rq->category_status;
+     $data['slug_category_product'] =  $rq->category_slug;
+     $data['meta_keywords'] =  $rq->category_keyword;
+     DB::table('tbl_category_product')->where('category_id',$category_id)->update($data);// update mang data vào db
      Session::put('message','Cập nhật danh mục sản phẩm thành công');
-     return Redirect::to('all-category-product');
+     return Redirect::to('edit-category/'.$category_id)->with('message','Cập nhật danh mục thành công');
+    }
+    public function delete_category($category_id){
+    $this->AuthLogin();
+    DB::table('tbl_category_product')->where('category_id',$category_id)->delete();// update mang data vào db
+     Session::put('message','Xóa danh mục sản phẩm thành công');
+     return Redirect::to('all-category');	
     }
 
 }

@@ -194,23 +194,21 @@
                             <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-calendar"></i><span> Danh Mục <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                             <ul class="submenu">
                                 <li><a href="{{URL::to('/add-category')}}">Thêm danh mục</a></li>
-                                <li><a href="{{URL::to('/all-category-product')}}">Danh sách danh mục</a></li>
+                                <li><a href="{{URL::to('/all-category')}}">Danh sách danh mục</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-briefcase"></i><span> Thương Hiệu <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                             <ul class="submenu">
-                                <li><a href="email-inbox.html">Inbox</a></li>
-                                <li><a href="email-read.html">Email Read</a></li>
-                                <li><a href="email-compose.html">Email Compose</a></li>
+                                <li><a href="{{URL::to('/add-brand')}}">Thêm thương hiệu</a></li>
+                                <li><a href="{{URL::to('/all-brand')}}">Danh sách thương hiệu</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-broadcast"></i><span> Sản Phẩm <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                             <ul class="submenu">
-                                <li><a href="email-inbox.html">Inbox</a></li>
-                                <li><a href="email-read.html">Email Read</a></li>
-                                <li><a href="email-compose.html">Email Compose</a></li>
+                                <li><a href="{{URL::to('/add-product')}}">Thêm sản phẩm</a></li>
+                                <li><a href="{{URL::to('/all-product')}}">Liệt kê thương hiệu</a></li>
                             </ul>
                         </li>
                         <li>
@@ -311,9 +309,28 @@
 
     <script src="{{url('public/back-end/pages/dashboard.init.js')}}"></script>
 
+    <script src="{{url('public/back-end/plugins/tinymce/tinymce.min.js')}}"></script>
+
+     <script>
+        $(document).ready(function() {
+            if ($("#elm1").length > 0 ) {
+                tinymce.init({
+                    selector: "textarea#elm1",
+                    theme: "modern",
+                    height: 300,
+                    plugins: [
+                        "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                        "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                        "save table contextmenu directionality emoticons template paste textcolor"
+                    ],
+                    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+                });
+            }
+        });
+    </script>
+    <script>tinymce.init({forced_root_block : "",selector:'textarea'});</script>
     <!-- App js -->
     <script src="{{url('public/back-end/assets/js/app.js')}}"></script>
-
 </body>
 
 </html>

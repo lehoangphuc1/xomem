@@ -17,7 +17,7 @@ Route::get('/', 'HomeController@index');
 
 
 
-
+Route::get('/trangchu', 'HomeController@index');
 
 
 
@@ -35,13 +35,31 @@ Route::get('/logout', 'AdminController@logout');
 //category
 Route::get('/add-category', 'CategoryController@add_category');  //add
 Route::post('/save-category','CategoryController@save_category'); //save
-
-
 Route::get('/all-category', 'CategoryController@all_category');//show
 
 Route::get('/edit-category/{category_id}','CategoryController@edit_category');//edit
-Route::get('/update-category/{category_id}','CategoryController@update_category');//update
-
+Route::post('/update-category/{category_id}','CategoryController@update_category');//update
 
 Route::get('/delete-category/{category_id}','CategoryController@delete_category');//delete
 
+
+//brand
+Route::get('/add-brand', 'BrandController@add_brand');  //add
+Route::post('/save-brand', 'BrandController@save_brand');  //save
+Route::get('/all-brand', 'BrandController@all_brand');  //show
+
+Route::get('/edit-brand/{brand_id}','BrandController@edit_brand');//edit
+Route::post('/update-brand/{brand_id}','BrandController@update_brand');//update
+
+Route::get('/delete-brand/{brand_id}','BrandController@delete_brand');//delete
+
+
+//product
+Route::get('/add-product', 'ProductController@add_product');  //add
+Route::post('/save-product', 'ProductController@save_product');  //save
+Route::get('/all-product', 'ProductController@all_product');  //show
+
+Route::get('/edit-product/{product_id}','ProductController@edit_product');//edit
+Route::post('/update-product/{product_id}','ProductController@update_product');//update
+
+Route::get('/delete-product/{product_id}','ProductController@delete_product');//delete

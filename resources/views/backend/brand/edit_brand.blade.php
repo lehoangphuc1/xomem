@@ -31,53 +31,47 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <?php 
-                                        $message = Session::get('message');
-                                        if($message){
-                                            echo '<div class="text-center" style="margin-bottom: 20px;"><span class="alert alert-success">'.$message.'</span></div>';
-                                            Session::put('message',null);//chi hien thi 1 lan
-                                        }    
-                                         ?>  
-                                    <h4 class="mt-0 header-title text-center">Thêm Danh Mục Sản Phẩm</h4>
-                                     <form role="form" action="{{URL::to('/save-category')}}" method="post">
+                                      <?php 
+                            $message = Session::get('message');
+                            if($message){
+                                echo '<div class="text-center" style="margin-bottom: 20px;"><span class="alert alert-success">'.$message.'</span></div>';
+                                Session::put('message',null);//chi hien thi 1 lan
+                            }    
+                             ?>  
+                                    <h4 class="mt-0 header-title text-center">Cập Nhật Thương Hiệu Sản Phẩm</h4>
+                                    @foreach($edit_brand as $key =>$edit_brand)  
+                                     <form role="form" action="{{URL::to('/update-brand/'.$edit_brand->brand_id)}}" method="post">
                                     {{csrf_field()}}
                                     <div class="form-group row">
-                                        <label for="example-text-input" class="col-sm-2 col-form-label">Tên Danh Mục</label>
+                                        <label for="example-text-input" class="col-sm-2 col-form-label">Tên Thương Hiệu</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" name="category_name" type="text"  id="example-text-input">
+                                            <input class="form-control" value="{{$edit_brand->brand_name}}" name="brand_name" type="text"  id="example-text-input">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="example-search-input" class="col-sm-2 col-form-label">Mô tả</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" name="category_desc" type="text"  id="example-search-input">
-                                            <textarea id="elm1" name="area"></textarea>
-                                        </div>
-                                    </div>
-                                      <div class="form-group row">
-                                        <label for="example-search-input" class="col-sm-2 col-form-label">Keywords</label>
-                                        <div class="col-sm-10">
-                                            <input class="form-control" name="category_keyword" type="text"  id="example-search-input">
+                                            <input class="form-control" value="{{$edit_brand->brand_desc}}" name="brand_desc" type="text"  id="example-search-input">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="example-search-input" class="col-sm-2 col-form-label">Slug</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" name="category_slug" type="text"  id="example-search-input">
+                                            <input class="form-control" value="{{$edit_brand->brand_slug}}"  name="brand_slug" type="text"  id="example-search-input">
                                         </div>
                                     </div>
-                                    
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Hiển Thị</label>
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="category_status">
-                                                <option value="0">Ẩn</option>
-                                                <option value="1">Hiện</option>
+                                            <select class="form-control" name="brand_status">
+                                                <option value="0" {{$edit_brand->brand_status==0 ? 'selected' : ''}}>Ẩn</option>
+                                                <option value="1" {{$edit_brand->brand_status==1 ? 'selected' : ''}}>Hiện</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm danh mục</button>
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật thương hiệu</button>
                                     </form>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

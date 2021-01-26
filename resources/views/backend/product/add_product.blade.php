@@ -38,45 +38,77 @@
                                             Session::put('message',null);//chi hien thi 1 lan
                                         }    
                                          ?>  
-                                    <h4 class="mt-0 header-title text-center">Thêm Danh Mục Sản Phẩm</h4>
-                                     <form role="form" action="{{URL::to('/save-category')}}" method="post">
+                                    <h4 class="mt-0 header-title text-center">Thêm Sản Phẩm</h4>
+                                     <form role="form" action="{{URL::to('/save-product')}}" method="post" enctype="multipart/form-data">
                                     {{csrf_field()}}
                                     <div class="form-group row">
-                                        <label for="example-text-input" class="col-sm-2 col-form-label">Tên Danh Mục</label>
+                                        <label for="example-text-input" class="col-sm-2 col-form-label">Tên sản phẩm</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" name="category_name" type="text"  id="example-text-input">
+                                            <input class="form-control" name="product_name" type="text" >
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="example-search-input" class="col-sm-2 col-form-label">Mô tả</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" name="category_desc" type="text"  id="example-search-input">
-                                            <textarea id="elm1" name="area"></textarea>
-                                        </div>
-                                    </div>
-                                      <div class="form-group row">
-                                        <label for="example-search-input" class="col-sm-2 col-form-label">Keywords</label>
-                                        <div class="col-sm-10">
-                                            <input class="form-control" name="category_keyword" type="text"  id="example-search-input">
+                                        <textarea id="elm1" name="product_desc"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="example-search-input" class="col-sm-2 col-form-label">Slug</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" name="category_slug" type="text"  id="example-search-input">
+                                         <input class="form-control" name="product_slug" type="text" >
                                         </div>
                                     </div>
-                                    
+
+                                    <div class="form-group row">
+                                        <label for="example-search-input" class="col-sm-2 col-form-label">Nội dung sản phẩm</label>
+                                        <div class="col-sm-10">
+                                        <textarea id="elm1" name="product_content"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-search-input" class="col-sm-2 col-form-label">Giá sản phẩm</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" name="product_price" type="text" >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="example-search-input" class="col-sm-2 col-form-label">Hình ảnh sản phẩm</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" name="product_image" type="file" >
+                                        </div>
+                                    </div>
+                                     <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Danh mục sản phẩm</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control" name="category_id">
+                                                @foreach($brand as $value)
+                                                <option value="{{$value->brand_id}}">{{$value->brand_name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                       <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Thương hiệu sản phẩm</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control" name="brand_id">
+                                                @foreach($category as $value)
+                                                 <option value="{{$value->category_id}}">{{$value->category_name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Hiển Thị</label>
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="category_status">
+                                            <select class="form-control" name="product_status">
                                                 <option value="0">Ẩn</option>
                                                 <option value="1">Hiện</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm danh mục</button>
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm sản phẩm</button>
                                     </form>
                                 </div>
                             </div>

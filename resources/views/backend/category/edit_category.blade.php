@@ -31,10 +31,10 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                           <?php 
+                            <?php 
                             $message = Session::get('message');
                             if($message){
-                                echo '<span class="success-alert">'.$message.'</span>';
+                                echo '<div class="text-center" style="margin-bottom: 20px;"><span class="alert alert-success">'.$message.'</span></div>';
                                 Session::put('message',null);//chi hien thi 1 lan
                             }    
                              ?>    
@@ -57,13 +57,13 @@
                                       <div class="form-group row">
                                         <label for="example-search-input" class="col-sm-2 col-form-label">Keywords</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" value="{{$edit_value->category_desc}}" name="meta_keywords" type="search"  id="example-search-input">
+                                            <textarea id="elm1" name="category_keyword">{{$edit_value->meta_keywords}}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="example-search-input"  class="col-sm-2 col-form-label">Slug</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" value="{{$edit_value->slug_category_product}}" name="category_slug" type="search"  id="example-search-input">
+                                            <input class="form-control" value="{{$edit_value->slug_category_product}}" name="category_slug" type="text"  id="example-search-input">
                                         </div>
                                     </div>
                                     
@@ -71,8 +71,8 @@
                                         <label class="col-sm-2 col-form-label">Hiển Thị</label>
                                         <div class="col-sm-10">
                                             <select class="form-control" name="category_status">
-                                                <option value="0">Ẩn</option>
-                                                <option value="1">Hiện</option>
+                                                <option value="0" {{$edit_value->category_status==0 ?'selected' : '' }}>Ẩn</option>
+                                                <option value="1" {{$edit_value->category_status==1 ?'selected' : ''}}>Hiện</option>
                                             </select>
                                         </div>
                                     </div>

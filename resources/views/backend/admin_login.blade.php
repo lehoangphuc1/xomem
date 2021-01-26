@@ -39,20 +39,35 @@
                                     <img src="{{url('public/back-end/assets/images/logo-dark.png')}}" class="mt-3" alt="" height="26"></a>
                                 <p class="text-muted w-75 mx-auto mb-4 mt-4">Enter your email address and password to access admin panel.</p>
                             </div>
-
+                                <?php 
+                                 $message = Session::get('message');
+                                 if($message){
+                                    echo '<div class="alert alert-danger"><li>'.$message.'</li></div>';
+                                    Session::put('message',null);
+                                 }
+                                 ?>
+                                 @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                             <form class="form-horizontal mt-4" action="{{URL::to('admin-dashboard')}}" method="POST">
                                    @csrf
                                 <div class="form-group">
                                     <div class="col-12">
                                         <label for="username">Username</label>
-                                        <input class="form-control" type="text" required="" name="admin_email" id="username" placeholder="Email">
+                                        <input class="form-control" type="text"  name="admin_email" id="username" placeholder="Email">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="col-12">
                                         <label for="password">Password</label>
-                                        <input class="form-control" type="password" name="admin_password" required="" id="password" placeholder="Password">
+                                        <input class="form-control" type="password" name="admin_password" id="password" placeholder="Password">
                                     </div>
                                 </div>
 
