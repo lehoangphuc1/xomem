@@ -40,6 +40,14 @@ class HomeController extends Controller
         
       return view('frontend.homepage',compact('category','brand','product','newest_product','category_special'));
     }
+
+      public function search(Request $rq){
+      	$keyword = $rq->keyword_input;
+      	$search_product = DB::table('tbl_product')->where('product_name','like','%'.$keyword. '%')->get(); //ham so sanh like
+      	$brand = DB::table('tbl_brand')->get();
+      	$category_all = DB::table('tbl_category_product')->get();
+      return view('frontend.product.search')->with('category_all',$category_all)->with('brand',$brand)->with('search_product',$search_product);
+    }
 }
 
 

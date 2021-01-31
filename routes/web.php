@@ -18,8 +18,7 @@ Route::get('/', 'HomeController@index');
 
 
 Route::get('/trangchu', 'HomeController@index');
-
-
+Route::post('/search-product', 'HomeController@search'); //tim kiem san pham
 
 
 
