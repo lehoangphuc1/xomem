@@ -63,3 +63,9 @@ Route::get('/edit-product/{product_id}','ProductController@edit_product');//edit
 Route::post('/update-product/{product_id}','ProductController@update_product');//update
 
 Route::get('/delete-product/{product_id}','ProductController@delete_product');//delete
+
+
+//product-detail
+
+Route::get('/detail-product/{product_slug}','ProductController@detail_product');
+Route::get('/category-product/{category_id}','ProductController@category_product');//show product by name

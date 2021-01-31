@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,12 +14,23 @@
 
     <!--Morris Chart CSS -->
     <link rel="stylesheet" href="{{url('public/back-end/plugins/morris/morris.css')}}">
+    <!-- DataTables -->
+    <link href="{{url('public/back-end/plugins/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{url('public/back-end/plugins/datatables/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+
+    <!-- Responsive datatable examples -->
+    <link href="{{url('public/back-end/plugins/datatables/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
 
     <link href="{{url('public/back-end/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{url('public/back-end/assets/css/metismenu.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{url('public/back-end/assets/css/icons.css')}}" rel="stylesheet" type="text/css">
     <link href="{{url('public/back-end/assets/css/style.css')}}" rel="stylesheet" type="text/css">
-
+    <style>  
+    .align-right.button-add-top {
+        float: right;
+        margin: 10px 15px;
+    }
+    </style>
 </head>
 
 <body>
@@ -208,31 +218,15 @@
                             <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-broadcast"></i><span> Sản Phẩm <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                             <ul class="submenu">
                                 <li><a href="{{URL::to('/add-product')}}">Thêm sản phẩm</a></li>
-                                <li><a href="{{URL::to('/all-product')}}">Liệt kê thương hiệu</a></li>
+                                <li><a href="{{URL::to('/all-product')}}">Liệt kê sản phẩm</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-document"></i><span> Forms <span class="badge badge-pill badge-danger float-right">8</span> </span></a>
-                            <ul class="submenu">
-                                <li><a href="form-elements.html">Form Elements</a></li>
-                                <li><a href="form-validation.html">Form Validation</a></li>
-                                <li><a href="form-advanced.html">Form Advanced</a></li>
-                                <li><a href="form-editors.html">Form Editors</a></li>
-                                <li><a href="form-uploads.html">Form File Upload</a></li>
-                                <li><a href="form-mask.html">Form Mask</a></li>
-                                <li><a href="form-summernote.html">Summernote</a></li>
-                                <li><a href="form-xeditable.html">Form Xeditable</a></li>
-                            </ul>
                         </li>
 
                         <li>
                             <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-list"></i><span> Tables <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                            <ul class="submenu">
-                                <li><a href="tables-basic.html">Basic Tables</a></li>
-                                <li><a href="tables-datatable.html">Data Table</a></li>
-                                <li><a href="tables-responsive.html">Responsive Table</a></li>
-                                <li><a href="tables-editable.html">Editable Table</a></li>
-                            </ul>
                         </li>
                     </ul>
 
@@ -259,10 +253,7 @@
                         <div class="row align-items-center ">
                             <div class="col-md-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title">Dashboard</h4>
-                                   
                                        @yield('content')
-                                  
                                 </div>
                             </div>
 
@@ -329,6 +320,28 @@
         });
     </script>
     <script>tinymce.init({forced_root_block : "",selector:'textarea'});</script>
+
+
+      <!-- Required datatable js -->
+    <script src="{{url('public/back-end/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{url('public/back-end/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
+    <!-- Buttons examples -->
+    <script src="{{url('public/back-end/plugins/datatables/dataTables.buttons.min.js')}}"></script>
+    <script src="{{url('public/back-end/plugins/datatables/buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{url('public/back-end/plugins/datatables/jszip.min.js')}}"></script>
+    <script src="{{url('public/back-end/plugins/datatables/pdfmake.min.js')}}"></script>
+    <script src="{{url('public/back-end/plugins/datatables/vfs_fonts.js')}}"></script>
+    <script src="{{url('public/back-end/plugins/datatables/buttons.html5.min.js')}}"></script>
+    <script src="{{url('public/back-end/plugins/datatables/buttons.print.min.js')}}"></script>
+    <script src="{{url('public/back-end/plugins/datatables/buttons.colVis.min.js')}}"></script>
+
+       <!-- Responsive examples -->
+    <script src="{{url('public/back-end/plugins/datatables/dataTables.responsive.min.js')}}"></script>
+    <script src="{{url('public/back-end/plugins/datatables/responsive.bootstrap4.min.js')}}"></script>
+
+    <!-- Datatable init js -->
+    <script src="{{url('public/back-end/assets/pages/datatables.init.js')}}"></script>
+
     <!-- App js -->
     <script src="{{url('public/back-end/assets/js/app.js')}}"></script>
 </body>

@@ -1,3 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Homepage</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{url('public/front-end/images/favicon.ico')}}">
+
+    <!-- CSS
+    ============================================ -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{url('public/front-end/css/vendor/bootstrap.min.css')}}">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="{{url('public/front-end/css/vendor/font-awesome.css')}}">
+    <!-- Fontawesome Star -->
+    <link rel="stylesheet" href="{{url('public/front-end/css/vendor/fontawesome-stars.css')}}">
+    <!-- Ion Icon -->
+    <link rel="stylesheet" href="{{url('public/front-end/css/vendor/ion-fonts.css')}}">
+    <!-- Slick CSS -->
+    <link rel="stylesheet" href="{{url('public/front-end/css/plugins/slick.css')}}">
+    <!-- Animation -->
+    <link rel="stylesheet" href="{{url('public/front-end/css/plugins/animate.css')}}">
+    <!-- jQuery Ui -->
+    <link rel="stylesheet" href="{{url('public/front-end/css/plugins/jquery-ui.min.css')}}">
+    <!-- Lightgallery -->
+    <link rel="stylesheet" href="{{url('public/front-end/css/plugins/lightgallery.min.css')}}">
+    <!-- Nice Select -->
+    <link rel="stylesheet" href="{{url('public/front-end/css/plugins/nice-select.css')}}">
+
+    <!-- Vendor & Plugins CSS (Please remove the comment from below vendor.min.css & plugins.min.css for better website load performance and remove css files from the above) -->
+    <!--
+    <script src="assets/js/vendor/vendor.min.js"></script>
+    <script src="assets/js/plugins/plugins.min.js"></script>
+    -->
+
+    <!-- Main Style CSS (Please use minify version for better website load performance) -->
+    <link rel="stylesheet" href="{{url('public/front-end/css/style.css')}}">
+    <!--<link rel="stylesheet" href="assets/css/style.min.css">-->
+    <style>
+        li.right-menu.cat-mega-title.fix{ 
+        width: 40%;
+        float: left;
+         }
+    </style>
+</head>
+
+<body class="template-color-1">
+
+    <div class="main-wrapper">
+
+        <!-- Begin Loading Area -->
+        <div class="loading">
+            <div class="text-center middle">
+                <div class="lds-ellipsis">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <!-- Loading Area End Here -->
+        <!-- Begin Hiraola's Newsletter Popup Area -->
+        <div class="popup_wrapper">
+            <div class="test">
+                <span class="popup_off"><i class="ion-android-close"></i></span>
+                <div class="subscribe_area text-center">
+                    <h2>Sign up for send newsletter?</h2>
+                    <p>Subscribe to our newsletters now and stay up-to-date with new collections, the latest lookbooks and exclusive offers.</p>
+                    <div class="subscribe-form-group">
+                        <form action="#">
+                            <input autocomplete="off" type="text" name="message" id="message" placeholder="Enter your email address">
+                            <button type="submit">subscribe</button>
+                        </form>
+                    </div>
+                    <div class="subscribe-bottom">
+                        <input type="checkbox" id="newsletter-permission">
+                        <label for="newsletter-permission">Don't show this popup again</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hiraola's Newsletter Popup Area Here -->
    <header class="header-main_area">
             <div class="header-top_area">
                 <div class="container">
@@ -152,100 +241,17 @@
                             <div class="main-menu_area">
                                 <nav>
                                     <ul>
-                                        <li class="dropdown-holder"><a href="index.html">Home</a>
-                                            <ul class="hm-dropdown">
-                                                <li class="active"><a href="index.html">Home One</a></li>
-                                                <li><a href="index-2.html">Home Two</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="megamenu-holder"><a href="shop-left-sidebar.html">Shop</a>
-                                            <ul class="hm-megamenu">
-                                                <li><span class="megamenu-title">Shop Page Layout</span>
-                                                    <ul>
-                                                        <li><a href="shop-3-column.html">Grid Fullwidth</a></li>
-                                                        <li><a href="shop-left-sidebar.html">Left Sidebar</a></li>
-                                                        <li><a href="shop-right-sidebar.html">Right Sidebar</a></li>
-                                                        <li><a href="shop-list-fullwidth.html">List Fullwidth</a></li>
-                                                        <li><a href="shop-list-left-sidebar.html">List Left Sidebar</a></li>
-                                                        <li><a href="shop-list-right-sidebar.html">List Right Sidebar</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li><span class="megamenu-title">Single Product Style</span>
-                                                    <ul>
-                                                        <li><a href="single-product-gallery-left.html">Gallery Left</a></li>
-                                                        <li><a href="single-product-gallery-right.html">Gallery Right</a>
-                                                        </li>
-                                                        <li><a href="single-product-tab-style-left.html">Tab Style Left</a>
-                                                        </li>
-                                                        <li><a href="single-product-tab-style-right.html">Tab Style
-                                                                Right</a>
-                                                        </li>
-                                                        <li><a href="single-product-sticky-left.html">Sticky Left</a></li>
-                                                        <li><a href="single-product-sticky-right.html">Sticky Right</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><span class="megamenu-title">Single Product Type</span>
-                                                    <ul>
-                                                        <li><a href="single-product.html">Single Product</a></li>
-                                                        <li><a href="single-product-sale.html">Single Product Sale</a></li>
-                                                        <li><a href="single-product-group.html">Single Product Group</a>
-                                                        </li>
-                                                        <li><a href="single-product-variable.html">Single Product Variable</a>
-                                                        </li>
-                                                        <li><a href="single-product-affiliate.html">Single Product
-                                                                Affiliate</a>
-                                                        </li>
-                                                        <li><a href="single-product-slider.html">Single Product Slider</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item_img"></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="blog-left-sidebar.html">Blog</a>
-                                            <ul class="hm-dropdown">
-                                                <li><a href="blog-left-sidebar.html">Grid View</a>
-                                                    <ul class="hm-dropdown hm-sub_dropdown">
-                                                        <li><a href="blog-2-column.html">Column Two</a></li>
-                                                        <li><a href="blog-3-column.html">Column Three</a></li>
-                                                        <li><a href="blog-left-sidebar.html">Left Sidebar</a></li>
-                                                        <li><a href="blog-right-sidebar.html">Right Sidebar</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="blog-list-left-sidebar.html">List View</a>
-                                                    <ul class="hm-dropdown hm-sub_dropdown">
-                                                        <li><a href="blog-list-fullwidth.html">List Fullwidth</a></li>
-                                                        <li><a href="blog-list-left-sidebar.html">List Left Sidebar</a></li>
-                                                        <li><a href="blog-list-right-sidebar.html">List Right Sidebar</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="blog-details-left-sidebar.html">Blog Details</a>
-                                                    <ul class="hm-dropdown hm-sub_dropdown">
-                                                        <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>
-                                                        <li><a href="blog-details-right-sidebar.html">Right Sidebar</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="blog-gallery-format.html">Blog Format</a>
-                                                    <ul class="hm-dropdown hm-sub_dropdown">
-                                                        <li><a href="blog-gallery-format.html">Gallery Format</a></li>
-                                                        <li><a href="blog-audio-format.html">Audio Format</a></li>
-                                                        <li><a href="blog-video-format.html">Video Format</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                        <li class="dropdown-holder"><a href="{{URL::to('/')}}">Home</a></li>
                                         <li><a href="index.html">Pages</a>
                                             <ul class="hm-dropdown">
-                                                <li><a href="my-account.html">My Account</a></li>
-                                                <li><a href="login-register.html">Login | Register</a></li>
-                                                <li><a href="wishlist.html">Wishlist</a></li>
-                                                <li><a href="cart.html">Cart</a></li>
-                                                <li><a href="checkout.html">Checkout</a></li>
-                                                <li><a href="compare.html">Compare</a></li>
-                                                <li><a href="faq.html">FAQ</a></li>
-                                                <li><a href="404.html">404 Error</a></li>
+                                                <li><a href="#">My Account</a></li>
+                                                <li><a href="#">Login | Register</a></li>
+                                                <li><a href="#">Wishlist</a></li>
+                                                <li><a href="#">Cart</a></li>
+                                                <li><a href="#">Checkout</a></li>
+                                                <li><a href="#">Compare</a></li>
+                                                <li><a href="#">FAQ</a></li>
+                                                <li><a href="#">404 Error</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="about-us.html">About Us</a></li>

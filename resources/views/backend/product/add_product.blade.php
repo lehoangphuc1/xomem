@@ -76,25 +76,55 @@
                                     <div class="form-group row">
                                         <label for="example-search-input" class="col-sm-2 col-form-label">Hình ảnh sản phẩm</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" name="product_image" type="file" >
+                                            <input class="form-control" name="product_image" type="file" onchange="previewFile(this);" >
+                                           <img id="previewImg" style="display:none;" src="public/uploads/product/20210127064314.jpg" width="438" height="438" >
                                         </div>
                                     </div>
-                                     <div class="form-group row">
+                                      <div class="form-group row">
+                                        <label for="example-search-input" class="col-sm-2 col-form-label">Sản phẩm đặc biệt</label>
+                                        <div class="col-sm-10">
+                                                <!-- Default radio -->
+                                                <div class="form-check">
+                                                  <input
+                                                    class="form-check-input"
+                                                    type="radio"
+                                                    name="show_option"
+                                                    id="flexRadioDefault1"
+                                                    value="0"
+                                                  />
+                                                  <label class="form-check-label" for="flexRadioDefault1"> No </label>
+                                                </div>
+
+                                                <!-- Default checked radio -->
+                                                <div class="form-check">
+                                                  <input
+                                                    class="form-check-input"
+                                                    type="radio"
+                                                    name="show_option"
+                                                    id="flexRadioDefault2"
+                                                    checked
+                                                     value="1"
+                                                  />
+                                                  <label class="form-check-label" for="flexRadioDefault2"> Yes </label>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Danh mục sản phẩm</label>
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="category_id">
-                                                @foreach($brand as $value)
-                                                <option value="{{$value->brand_id}}">{{$value->brand_name}}</option>
+                                            <select class="form-control"  name="category_id" >
+                                                @foreach($category as $value)
+                                                 <option value="{{$value->category_id}}">{{$value->category_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
-                                       <div class="form-group row">
+                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Thương hiệu sản phẩm</label>
                                         <div class="col-sm-10">
                                             <select class="form-control" name="brand_id">
-                                                @foreach($category as $value)
-                                                 <option value="{{$value->category_id}}">{{$value->category_name}}</option>
+                                                @foreach($brand as $value)
+                                                <option value="{{$value->brand_id}}">{{$value->brand_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -118,4 +148,21 @@
                     <!-- end row -->
 
                 </div>
+                <script type="text/javascript">
+                
+              </script>
+                <script>
+
+                     function previewFile(input){
+                        var file = $("input[name='product_image']").get(0).files[0];
+                        if(file){
+                            var reader = new FileReader();
+                            reader.onload = function(){
+                                $('#previewImg').show();
+                                $("#previewImg").attr("src", reader.result);
+                            }
+                            reader.readAsDataURL(file);
+                        }
+                    }
+                </script>
 @endsection
