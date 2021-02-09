@@ -68,3 +68,53 @@ Route::get('/delete-product/{product_id}','ProductController@delete_product');//
 
 Route::get('/detail-product/{product_slug}','ProductController@detail_product');
 Route::get('/category-product/{category_id}','ProductController@category_product');//show product by name
+
+
+//cart
+Route::post('/save-cart','CartController@save_cart');
+Route::get('/show-cart','CartController@show_cart');
+/*Route::get('/delete-cart/{row_id}','CartController@delete_cart');*/
+/*Route::post('/update-cart-quantity/{row_id}','CartController@update_cart_quantity');*/
+Route::get('/update-cart/{id}/{qty}','CartController@update_cart');
+Route::get('/delete-cart/{rowId}','CartController@delete_cart');
+
+//cart-ajax
+Route::get('/add-cart-ajax/{id}','CartController@add_cart_ajax');
+Route::get('/check-cart-ajax','CartController@check_cart_ajax');
+
+
+
+//login-checkout
+Route::get('/login-checkout','CheckOutController@login_checkout');
+Route::get('/logout','CheckOutController@logout_checkout');
+Route::post('/login-customer','CheckOutController@login_customer');
+
+//register
+Route::post('/add-customer','CheckOutController@add_customer');
+
+Route::get('/checkout','CheckOutController@checkout');
+Route::post('/save-checkout','CheckOutController@save_checkout');
+Route::get('/payment','CheckOutController@payment');
+Route::post('/order-place','CheckOutController@order_place');
+
+
+//order-manage
+Route::get('/order-manage','CheckOutController@order_manage');
+Route::get('/view-order/{orderId}','CheckOutController@view_order');
+
+
+
+
+
+//coupon frontend
+Route::post('/check-coupon','CartController@check_coupon');
+
+
+
+//coupon backend
+Route::get('/add-coupon','CouponController@add_coupon');
+Route::post('/save-coupon','CouponController@save_coupon');
+Route::get('/list-coupon','CouponController@list_coupon');
+
+
+

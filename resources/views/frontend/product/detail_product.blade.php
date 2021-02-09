@@ -60,9 +60,12 @@
                                         <li class="silver-color"><i class="fa fa-star-of-david"></i></li>
                                     </ul>
                                 </div>
+                                <form action="{{URL::to('/save-cart')}}" method="POST">
+                                    {{csrf_field()}}
                                 <div class="sp-essential_stuff">
                                     <ul>
                                         <li>Price: <a href="javascript:void(0)"><span>{{number_format($pro->product_price, 0, '', ',')}} VNĐ</span></a></li>
+                                        <li><input type="hidden" name="productid_hidden" value="{{$pro->product_id}}"></li>
                                         <li>Category <a href="javascript:void(0)">{{$pro->category_name}}</a></li>
                                         <li>Brands <a href="javascript:void(0)">{{$pro->brand_name}}</a></li>
                                         <li>Product Code: <a href="javascript:void(0)">{{$pro->product_slug}}</a></li>
@@ -81,18 +84,19 @@
                                 <div class="quantity">
                                     <label>Quantity</label>
                                     <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" value="1" type="text">
+                                        <input class="cart-plus-minus-box" name="qty" min="1" value="1" type="text">
                                         <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                         <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                     </div>
                                 </div>
                                 <div class="qty-btn_area">
                                     <ul>
-                                        <li><a class="qty-cart_btn" href="cart.html">Add To Cart</a></li>
+                                        <li><button class="submit-cart" type="sybmit">Add To Cart</a></li>
                                         <li><a class="qty-wishlist_btn" href="wishlist.html" data-toggle="tooltip" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
                                         <li><a class="qty-compare_btn" href="compare.html" data-toggle="tooltip" title="Compare This Product"><i class="ion-ios-shuffle-strong"></i></a></li>
                                     </ul>
                                 </div>
+                                </form>
                                 <div class="hiraola-tag-line">
                                     <h6>Tags:</h6>
                                     <a href="javascript:void(0)">Ring</a>,
@@ -367,3 +371,19 @@
         </div>
     <!-- End Special Product -->
    @include('frontend.footer')
+   <style>
+       .submit-cart{
+        background: #333333;
+    color: #ffffff;
+    padding: 0 40px;
+    height: 40px;
+    line-height: 40px;
+    border: 0;
+    display: block;
+    margin: 30px auto 0;
+    text-transform: uppercase;
+       }
+       .submit-cart:hover{
+        background: #cda557;
+       }
+   </style>

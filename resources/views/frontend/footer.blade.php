@@ -375,15 +375,77 @@
     <script src="{{url('public/front-end/js/plugins/instafeed.min.js')}}"></script>
     <!-- Instafeed JS -->
     <script src="{{url('public/front-end/js/plugins/jquery.elevateZoom-3.0.8.min.js')}}"></script>
-
-    <!-- Vendor & Plugins JS (Please remove the comment from below vendor.min.js & plugins.min.js for better website load performance and remove js files from avobe) -->
-    <!--
-<script src="assets/js/vendor/vendor.min.js"></script>
-<script src="assets/js/plugins/plugins.min.js"></script>
--->
-
-    <!-- Main JS -->
+    <script src="{{url('public/front-end/js/plugins/sweetalert.js')}}"></script>
     <script src="{{url('public/front-end/js/main.js')}}"></script>
+    <script>
+        $(document).ready(function(){
+            $('.add-to-cart').click(function(e){
+                var id = $(this).data('id');
+             
+            if(id){
+                    $.ajax({
+                    url: "{{url('/add-cart-ajax/')}}/"+id,
+                    method: "get",
+                    dataType:"json",
+                    success:function(data){
+
+                        swal({
+                                title: "Đã thêm sản phẩm vào giỏ hàng",
+                                text: "Bạn có thể mua hàng tiếp hoặc tới giỏ hàng để tiến hành thanh toán",
+                                showCancelButton: true,
+                                cancelButtonText: "Xem tiếp",
+                                confirmButtonClass: "btn-success",
+                                confirmButtonText: "Đi đến giỏ hàng",
+                                closeOnConfirm: false
+                            },
+                            function() {
+                                window.location.href = "{{url('/check-cart-ajax')}}";
+                            });
+                    }
+
+                });
+               }
+               else{
+                alert("danger");
+               }
+            })
+
+            $('.updatecart').click(function(e){
+                e.preventDefault();
+                var rowid = $(this).attr('id');
+                var qty = $(this).parent().parent().parent().find('.cart_quantity').val();
+                var token = $("input[name='_token']").val();
+                $.ajax({
+                    url:'update-cart/'+rowid+'/'+qty,
+                    type: 'GET',
+                    cache: false,
+                    data: {
+                        "_token" :token, "id" :rowid, "qty" : qty
+                    },
+                    success: function(data){
+                        window.location.href = "{{url('/check-cart-ajax')}}";
+                    }
+                });
+                 
+            });
+
+              $('.delele-cart').click(function(e){
+                e.preventDefault();
+                var rowid = $(this).attr('id');
+                var qty = $(this).parent().parent().parent().find('.cart_quantity').val();
+                var token = $("input[name='_token']").val();
+                $.ajax({
+                    url:'delete-cart/'+rowid,
+                    type: 'GET',
+                    cache: false,
+                    success: function(data){
+                        window.location.reload();
+                    }
+                });
+            });
+        });
+
+    </script>
 
 </body>
 

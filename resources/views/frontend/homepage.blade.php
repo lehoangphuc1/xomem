@@ -154,7 +154,7 @@
                                         <span class="sticker">New</span>
                                         <div class="add-actions">
                                             <ul>
-                                                <li><a class="hiraola-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a></li>
+                                                <li><a class="hiraola-add_cart add-to-cart" style="cursor: pointer;" data-id="{{$new->product_id}}" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a></li>
                                                 <li><a class="hiraola-add_compare" href="#" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i class="ion-ios-shuffle-strong"></i></a></li>
                                                 <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="ion-eye"></i></a></li>
                                             </ul>
@@ -243,7 +243,7 @@
                                 <div class="hiraola-product-tab_slider-2">
                                     @foreach($product as $key => $pro)
                                     @if($pro->category_id==$cate->category_id)
-                                    <div class="slide-item">
+                                     <div class="slide-item">
                                         <div class="single_product">
                                             <div class="product-img">
                                                 <a href="{{URL::to('/detail-product/'.$pro->product_slug)}}">
@@ -252,7 +252,7 @@
                                                 </a>
                                                 <div class="add-actions">
                                                     <ul>
-                                                        <li><a class="hiraola-add_cart" href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i
+                                                        <li><a class="hiraola-add_cart add-to-cart" style="cursor: pointer;" data-id="{{$pro->product_id}}" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i
                                                                 class="ion-bag"></i></a>
                                                         </li>
                                                         <li><a class="hiraola-add_compare" href="#" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
@@ -358,7 +358,7 @@
                                                 </a>
                                                 <div class="add-actions">
                                                     <ul>
-                                                        <li><a class="hiraola-add_cart" href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
+                                                        <li><a class="hiraola-add_cart add-to-cart" style="cursor: pointer;" data-id="{{$pro->product_id}}" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
                                                         </li>
                                                         <li><a class="hiraola-add_compare" href="#" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
                                                                 class="ion-ios-shuffle-strong"></i></a>
@@ -463,16 +463,17 @@
                                 <div class="hiraola-product-tab_slider-2">
                                    @foreach($product as $key => $pro)
                                     @if($pro->category_id==$cate->category_id)
-                                    <div class="slide-item">
+                                    <form>
+                        <div class="slide-item">
                                         <div class="single_product">
                                             <div class="product-img">
-                                                <a href="{{URL::to('/detail-product/'.$pro->product_slug)}}">
+                                                <a data-id="{{$pro->product_id}}" href="{{URL::to('/detail-product/'.$pro->product_slug)}}">
                                                     <img class="primary-img" src="{{url('public/uploads/product/'.$pro->product_image)}}" alt="Hiraola's Product Image">
                                                     <img class="secondary-img" src="{{url('public/uploads/product/'.$pro->product_image)}}" alt="Hiraola's Product Image">
                                                 </a>
                                                 <div class="add-actions">
                                                     <ul>
-                                                        <li><a class="hiraola-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
+                                                        <li><a class="hiraola-add_cart add-to-cart" style="cursor: pointer;" data-id="{{$pro->product_id}}" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
                                                         </li>
                                                         <li><a class="hiraola-add_compare" href="compare.html" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
                                                                 class="ion-ios-shuffle-strong"></i></a>
@@ -483,7 +484,7 @@
                                             </div>
                                             <div class="hiraola-product_content">
                                                 <div class="product-desc_info">
-                                                    <h6><a class="product-name" href="{{URL::to('/detail-product/'.$pro->product_slug)}}">{{$pro->product_name}}</a></h6>
+                                                    <h6><a class="product-name" data-id="{{$pro->product_id}}" href="{{URL::to('/detail-product/'.$pro->product_slug)}}">{{$pro->product_name}}</a></h6>
                                                     <div class="price-box">
                                                         <span class="new-price">{{number_format($pro->product_price, 0, '', ',')}} VNĐ</span>
                                                     </div>
@@ -507,6 +508,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    </form>
                                     @endif
                                     @endforeach
                                 </div>

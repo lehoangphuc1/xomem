@@ -190,13 +190,17 @@
                                 <i class="dripicons-meter"></i><span class="badge badge-info badge-pill float-right">9+</span> <span> Dashboard </span>
                             </a>
                         </li>
-
+                           <li>
+                            <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-mail"></i><span> Mã giảm giá <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                            <ul class="submenu">
+                                 <li><a href="{{URL::to('/add-coupon')}}">Thêm mã giảm giá</a></li>
+                                <li><a href="{{URL::to('/list-coupon')}}">Danh sách mã giảm giá</a></li>
+                            </ul>
+                        </li>
                         <li>
                             <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-mail"></i><span> Đơn Hàng <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                             <ul class="submenu">
-                                <li><a href="email-inbox.html">Inbox</a></li>
-                                <li><a href="email-read.html">Email Read</a></li>
-                                <li><a href="email-compose.html">Email Compose</a></li>
+                                <li><a href="{{URL::to('/order-manage')}}">Quản lý đơn hàng</a></li>
                             </ul>
                         </li>
 

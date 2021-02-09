@@ -13,7 +13,7 @@
 
     <!-- CSS
     ============================================ -->
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{url('public/front-end/css/vendor/bootstrap.min.css')}}">
     <!-- Fontawesome -->
@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="{{url('public/front-end/css/plugins/lightgallery.min.css')}}">
     <!-- Nice Select -->
     <link rel="stylesheet" href="{{url('public/front-end/css/plugins/nice-select.css')}}">
+    <link rel="stylesheet" href="{{url('public/front-end/css/plugins/sweetalert.css')}}">
 
     <!-- Vendor & Plugins CSS (Please remove the comment from below vendor.min.css & plugins.min.css for better website load performance and remove css files from the above) -->
     <!--
@@ -49,7 +50,6 @@
          }
     </style>
 </head>
-
 <body class="template-color-1">
 
     <div class="main-wrapper">
@@ -121,11 +121,19 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li><a href="my-account.html">My Account<i class="fa fa-chevron-down"></i></a>
-                                            <ul class="ht-dropdown ht-my_account">
-                                                <li><a href="javascript:void(0)">Register</a></li>
-                                                <li class="active"><a href="javascript:void(0)">Login</a></li>
-                                            </ul>
+                                        <?php
+                                        $customer_id = Session::get('customer_id');
+                                        if($customer_id !=NULL){
+                                        ?>
+                                        <li><a href="{{URL::to('/logout')}}">Logout</a>
+                                        <?php
+                                       }else{
+                                            ?>
+                                    
+                                        <li><a href="{{URL::to('/login-checkout')}}">Login</a>
+                                            <?php 
+                                        }
+                                        ?>
                                         </li>
                                     </ul>
                                 </div>
@@ -245,14 +253,46 @@
                                         <li class="dropdown-holder"><a href="{{URL::to('/')}}">Home</a></li>
                                         <li><a href="index.html">Pages</a>
                                             <ul class="hm-dropdown">
-                                                <li><a href="#">My Account</a></li>
-                                                <li><a href="#">Login | Register</a></li>
-                                                <li><a href="#">Wishlist</a></li>
-                                                <li><a href="#">Cart</a></li>
-                                                <li><a href="#">Checkout</a></li>
-                                                <li><a href="#">Compare</a></li>
-                                                <li><a href="#">FAQ</a></li>
-                                                <li><a href="#">404 Error</a></li>
+                                                <li><a href="{{URL::to('/login-checkout')}}">Login | Register</a></li>
+                                                 <?php
+                                                $customer_id = Session::get('customer_id');
+                                                if($customer_id !=NULL){
+                                                ?>    
+                                                <li><a href="{{URL::to('/check-cart-ajax')}}">Cart</a></li>
+                                                <?php
+                                              }else{
+                                                ?>
+                                                <li><a href="{{URL::to('/login-checkout')}}">Cart</a></li>
+                                                <?php 
+                                               }
+                                                ?>
+
+                                                <?php
+                                                $customer_id = Session::get('customer_id');
+                                                if($customer_id !=NULL){
+                                                ?> 
+                                                <li><a href="{{URL::to('/checkout')}}">Checkout</a></li>
+                                                <?php 
+                                               }else{
+                                                ?>
+                                                <li><a href="{{URL::to('/login-checkout')}}">Checkout</a></li>
+                                              <?php 
+                                              } ?>
+                                                 <?php
+                                                $customer_id = Session::get('customer_id');
+                                                $shipping_id = Session::get('shipping_id');
+                                                if($customer_id !=NULL && $shipping_id==NULL){
+                                                ?>  
+                                                 <li><a href="{{URL::to('/checkout')}}">Payment</a></li>
+                                                 <?php
+                                                }elseif($customer_id !=NULL && $shipping_id!=NULL){
+                                                 ?>
+                                                  <li><a href="{{URL::to('/payment')}}">Payment</a></li>
+                                                <?php
+                                               }else{
+                                                ?>
+                                                <li><a href="{{URL::to('/login-checkout')}}">Payment</a></li>
+                                                <?php } ?>
                                             </ul>
                                         </li>
                                         <li><a href="about-us.html">About Us</a></li>
