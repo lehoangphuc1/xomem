@@ -1,0 +1,45 @@
+
+
+Tầng Presentation: hiển thị các thành phần giao diện để tương tác với người dùng như tiếp nhận thông tin, thông báo lỗi, …
+Tầng Business Logic: thực hiện các hành động nghiệp vụ của phần mềm như tính toán, đánh giá tính hợp lệ của thông tin, … Tầng này còn di chuyển, xử lí thông tin giữa 2 tầng trên dưới.
+Tầng Data access : nơi lưu trữ và trích xuất dữ liệu từ các hệ quản trị CSDL hay các file trong hệ thống. Cho phép tầng Business logic thực hiện các truy vấn dữ liệu .
+
+Trong Spring Boot, thì có một số thành phần đại diện cho từng lớp:
+
+Service: chứa các business logic code
+Repository: đại diện cho tầng data access
+
+Mô hình MVC quá là phổ biến rồi nên mình không nhắc nhiều. Cụ thể, nó chia tầng presentation làm 3 phần:
+
+Model: các cấu trúc dữ liệu của toàn chương trình, có thể đại diện cho trạng thái của ứng dụng
+View: lớp giao diện, dùng để hiển thị dữ liệu ra cho user xem và tương tác
+Controller: kết nối giữa Model và View, điều khiển dòng dữ liệu
+
+Controller: trả về View (có chứa data sẵn, dạng trang HTML), hoặc Model thể hiện dưới dạng API cho View (View viết riêng bằng React, Vue, hoặc Angular).
+Service: chứa các code tính toán, xử lý. Khi Controller yêu cầu, thì Service tương ứng sẽ tiếp nhận và cho ra dữ liệu trả cho Controller (trả về Model). Controller sẽ gửi về View như trên.
+Repository: Service còn có thể tương tác với service khác, hoặc dùng Repository để gọi DB. Repository là thằng trực tiếp tương tác, đọc ghi dữ liệu trong DB và trả cho service.
+Ơ thế còn Model và View thì đi đâu? Mình sẽ giải thích như sau:
+
+Model chỉ đơn giản là các đối tượng được Service tính toán xong trả về cho Controller.
+View thì có 2 loại, một là dạng truyền thống là trả về 1 cục HTML có data rồi. Lúc này Controller sẽ pass dữ liệu vào View và return về (Spring MVC có JSP hoặc template engine như Thymeleaf làm điều đó).
+View dạng 2 là dạng View tách riêng (không thuộc về project Spring boot). Thường có trong các hệ thống dùng API. View sẽ được viết riêng bằng React, Angular,... Controller sẽ đưa dữ liệu Model thông qua API cho View, và cũng nhận lại các yêu cầu qua API luôn.
+
+
+
+
+Sơ đồ trên mình sẽ xét theo chiều kim đồng hồ nhé:
+
+Đầu tiên, user sẽ vào View để xem, tương tác
+Khi user bắt đầu load dữ liệu (ví dụ click nút Reload), thì 1 request từ View gửi cho Controller (kiểu như "ê, cho tao cái danh sách user với")
+Controller nhận được yêu cầu, bắt đầu đi hỏi ông Service (trong code là gọi method của Service)
+Service nhận được yêu cầu từ Controller, đối với các code đơn giản có thể tính toán và trả về luôn. Nhưng các thao tác cần đụng tới database thì Service phải gọi Repository để lấy dữ liệu trong DB
+Repository nhận được yêu cầu từ Service, sẽ thao tác với DB. Data lấy ra trong DB được hệ thống ORM (như JPA hoặc Hibernate) mapping thành các object (trong Java). Các object này gọi là Entity.
+Và bây giờ sẽ là đi ngược lại trả về cho user:
+
+Service nhận các Entity được Repository trả về, biến đổi nó. Biến đổi ở đây là có thể thực hiện tính toán, thêm bớt các field,... và cuối cùng biến Entity thành Model. Model sẽ được trả lại cho Controller.
+Controller nhận được Model, nó sẽ return cho View. Có 2 cách, một là dùng template engine pass dữ liệu Model vào trang HTML, rồi trả về cục HTML (đã có data) cho client. Cách 2 là gửi qua API, View tự parse ra và hiển thị tương ứng (hiển thị thế nào tùy View).
+Khi View hiển thị xong, user sẽ thấy danh sách user hiện lên trang web.
+Một số mẹo hay để tổ chức luồng đi cho tốt:
+
+Giữ cho Controller càng ít code càng tốt. Vì Controller chỉ là trung gian kết nối thông tin, nên không nên chứa nhiều code, thay vào đó nên bỏ vào Service.
+Nên tách bạch Service rõ ràng. Không nên cho 1 service thực hiện nhiều công việc, nên tách ra nhiều Service.
